@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Gioco
+
+
+@admin.register(Gioco)
+class GiocoAdmin(admin.ModelAdmin):
+    list_display = ("titolo", "piattaforma", "stato", "ore_giocate", "voto")
+    list_filter = ("stato", "piattaforma")
+    search_fields = ("titolo",)
