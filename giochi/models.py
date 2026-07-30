@@ -1,6 +1,27 @@
 from django.db import models
 
 
+class Sviluppatore(models.Model):
+    nome = models.CharField(max_length=100)
+    paese = models.CharField(max_length=100, blank=True)
+
+    class Meta:
+        ordering = ["nome"]
+
+    def __str__(self):
+        return self.nome
+
+
+class Genere(models.Model):
+    nome = models.CharField(max_length=50)
+
+    class Meta:
+        ordering = ["nome"]
+
+    def __str__(self):
+        return self.nome
+
+
 class Gioco(models.Model):
     class Stato(models.TextChoices):
         DA_GIOCARE = "DA_GIOCARE", "Da giocare"
@@ -15,20 +36,19 @@ class Gioco(models.Model):
         SWITCH = "SWITCH", "Nintendo Switch"
 
     titolo = models.CharField(max_length=200)
-    piattaforma = models.CharField(
-        max_length=10,
-        choices=Piattaforma.choices,
-        default=Piattaforma.PC,
-    )
-    stato = models.CharField(
-        max_length=12,
-        choices=Stato.choices,
-        default=Stato.DA_GIOCARE,
-    )
+    piattaforma = models.CharField(max_length=10, choices=Piattaforma.choices, default=Piattaforma.PC)
+    stato = models.CharField(max_length=12, choices=Stato.choices, default=Stato.DA_GIOCARE)
     ore_giocate = models.PositiveIntegerField(default=0)
     voto = models.PositiveSmallIntegerField(null=True, blank=True)
     note = models.TextField(blank=True)
     data_aggiunta = models.DateField(auto_now_add=True)
+    sviluppatore = models.ForeignKey(
+        Sviluppatore,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name="giochi",
+    )
+    generi = models.ManyToManyField(Genere, blank=True, related_name="giochi")
 
     class Meta:
         ordering = ["-data_aggiunta"]
