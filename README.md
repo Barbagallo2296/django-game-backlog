@@ -8,7 +8,7 @@ Il progetto espone sia un'**API REST** (con serializer, viewset, router e autent
 
 ## Requisiti
 
-- **Python ≥ 3.12** (il progetto è sviluppato e testato su 3.14)
+- **Python ≥ 3.14** 
 - **[uv](https://docs.astral.sh/uv/)** come gestore di ambiente e pacchetti
 
 Non serve installare le dipendenze a mano: sono dichiarate in `pyproject.toml` e bloccate in `uv.lock`. Il comando `uv sync` ricostruisce l'ambiente identico.
@@ -32,12 +32,17 @@ uv run python manage.py migrate
 # 3. carica i dati di esempio (giochi, sviluppatori, generi con relazioni)
 uv run python manage.py loaddata esempio
 
-# 4. crea un utente amministratore (scegli username e password)
+# 4. crea un utente amministratore (username + password a tua scelta)
 uv run python manage.py createsuperuser
 
 # 5. avvia il server di sviluppo
 uv run python manage.py runserver
 ```
+> **Sul superuser:** le credenziali scelte qui servono per accedere a `/admin/`
+> e per ottenere un token via `/api/token/`. Durante `createsuperuser` la password
+> **non compare mentre la digiti** (è normale, non è un blocco). Se Django la segnala
+> come troppo corta o troppo comune, puoi rispondere `y` per crearla comunque:
+> è un progetto locale di sviluppo.
 
 Il server sarà disponibile su **http://127.0.0.1:8000/**.
 
