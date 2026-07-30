@@ -16,8 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework.routers import DefaultRouter
+
+from giochi.api import GenereViewSet, GiocoViewSet, SviluppatoreViewSet
+
+router = DefaultRouter()
+router.register(r"giochi", GiocoViewSet)
+router.register(r"sviluppatori", SviluppatoreViewSet)
+router.register(r"generi", GenereViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("api/", include(router.urls)),
+    path("api-auth/", include("rest_framework.urls")),
+    path("api/token/", obtain_auth_token, name="api_token"),
     path("", include("giochi.urls")),
 ]
