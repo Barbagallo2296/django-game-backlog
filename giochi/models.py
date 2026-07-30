@@ -7,6 +7,7 @@ class Sviluppatore(models.Model):
 
     class Meta:
         ordering = ["nome"]
+        verbose_name_plural = "sviluppatori"
 
     def __str__(self):
         return self.nome
@@ -17,6 +18,7 @@ class Genere(models.Model):
 
     class Meta:
         ordering = ["nome"]
+        verbose_name_plural = "generi"
 
     def __str__(self):
         return self.nome
@@ -36,8 +38,16 @@ class Gioco(models.Model):
         SWITCH = "SWITCH", "Nintendo Switch"
 
     titolo = models.CharField(max_length=200)
-    piattaforma = models.CharField(max_length=10, choices=Piattaforma.choices, default=Piattaforma.PC)
-    stato = models.CharField(max_length=12, choices=Stato.choices, default=Stato.DA_GIOCARE)
+    piattaforma = models.CharField(
+        max_length=10,
+        choices=Piattaforma.choices,
+        default=Piattaforma.PC,
+    )
+    stato = models.CharField(
+        max_length=12,
+        choices=Stato.choices,
+        default=Stato.DA_GIOCARE,
+    )
     ore_giocate = models.PositiveIntegerField(default=0)
     voto = models.PositiveSmallIntegerField(null=True, blank=True)
     note = models.TextField(blank=True)
@@ -52,6 +62,7 @@ class Gioco(models.Model):
 
     class Meta:
         ordering = ["-data_aggiunta"]
+        verbose_name_plural = "giochi"
 
     def __str__(self):
         return self.titolo
