@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <title>Backlog</title>
+</head>
+<body>
+    <h1>Il mio backlog di giochi</h1>
+
+    <ul>
+        {% for gioco in giochi %}
+            <li>
+            <strong><a href="{% url 'giochi:dettaglio' gioco.id %}">{{ gioco.titolo }}</a></strong>                — {{ gioco.get_piattaforma_display }}
+                — {{ gioco.get_stato_display }}
+                {% if gioco.voto %}(voto: {{ gioco.voto }}/10){% endif %}
+            </li>
+        {% empty %}
+            <li>Nessun gioco nel backlog. Aggiungine qualcuno dall'admin!</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

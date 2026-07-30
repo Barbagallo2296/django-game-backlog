@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <title>{{ gioco.titolo }}</title>
+</head>
+<body>
+    <p><a href="{% url 'giochi:lista' %}">← Torna al backlog</a></p>
+
+    <h1>{{ gioco.titolo }}</h1>
+
+    <ul>
+        <li><strong>Piattaforma:</strong> {{ gioco.get_piattaforma_display }}</li>
+        <li><strong>Stato:</strong> {{ gioco.get_stato_display }}</li>
+        <li><strong>Ore giocate:</strong> {{ gioco.ore_giocate }}</li>
+        <li><strong>Voto:</strong>
+            {% if gioco.voto %}{{ gioco.voto }}/10{% else %}—{% endif %}
+        </li>
+        <li><strong>Aggiunto il:</strong> {{ gioco.data_aggiunta }}</li>
+    </ul>
+
+    {% if gioco.note %}
+        <h2>Note</h2>
+        <p>{{ gioco.note }}</p>
+    {% endif %}
+</body>
+</html>
