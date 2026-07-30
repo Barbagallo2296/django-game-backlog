@@ -1,0 +1,104 @@
+[
+{
+  "model": "giochi.sviluppatore",
+  "pk": 1,
+  "fields": {
+    "nome": "Creative Assembly",
+    "paese": "Regno Unito"
+  }
+},
+{
+  "model": "giochi.sviluppatore",
+  "pk": 2,
+  "fields": {
+    "nome": "ILCA",
+    "paese": "Giappone"
+  }
+},
+{
+  "model": "giochi.genere",
+  "pk": 1,
+  "fields": {
+    "nome": "Strategia"
+  }
+},
+{
+  "model": "giochi.genere",
+  "pk": 2,
+  "fields": {
+    "nome": "Storico"
+  }
+},
+{
+  "model": "giochi.genere",
+  "pk": 3,
+  "fields": {
+    "nome": "Anime"
+  }
+},
+{
+  "model": "giochi.genere",
+  "pk": 4,
+  "fields": {
+    "nome": "Azione"
+  }
+},
+{
+  "model": "giochi.genere",
+  "pk": 5,
+  "fields": {
+    "nome": "Avventura"
+  }
+},
+{
+  "model": "giochi.gioco",
+  "pk": 1,
+  "fields": {
+    "titolo": "One Piece Odyssey",
+    "piattaforma": "PC",
+    "stato": "FINITO",
+    "ore_giocate": 40,
+    "voto": 8,
+    "note": "Gran bel gioco dai....",
+    "data_aggiunta": "2026-07-28",
+    "sviluppatore": 2,
+    "generi": [
+      3,
+      5
+    ]
+  }
+},
+{
+  "model": "giochi.gioco",
+  "pk": 2,
+  "fields": {
+    "titolo": "Rome Total War 2",
+    "piattaforma": "PC",
+    "stato": "FINITO",
+    "ore_giocate": 200,
+    "voto": 9,
+    "note": "Top gioco....",
+    "data_aggiunta": "2026-07-28",
+    "sviluppatore": 1,
+    "generi": [
+      2,
+      1
+    ]
+  }
+},
+{
+  "model": "giochi.gioco",
+  "pk": 3,
+  "fields": {
+    "titolo": "Sekiro",
+    "piattaforma": "PC",
+    "stato": "FINITO",
+    "ore_giocate": 0,
+    "voto": 10,
+    "note": "",
+    "data_aggiunta": "2026-07-30",
+    "sviluppatore": null,
+    "generi": []
+  }
+}
+]
